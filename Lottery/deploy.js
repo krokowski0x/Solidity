@@ -14,7 +14,7 @@ const web3 =     new Web3(provider);
 
   const result = await new web3.eth
     .Contract(JSON.parse(interface))
-    .deploy({ data: '0x' + bytecode, arguments: ['Hello!'] })
+    .deploy({ data: '0x' + bytecode })
     .send({ from: accounts[0] });
 
   console.log('To:', result.options.address);
