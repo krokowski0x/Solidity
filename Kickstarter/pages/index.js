@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Button } from "semantic-ui-react";
+import Layout from "../components/Layout";
 import factory from "../ethereum/factory";
 
 export default class CampaignIndex extends Component {
@@ -22,14 +23,22 @@ export default class CampaignIndex extends Component {
 
 	render() {
 		return (
-			<div>
-				<link
-					rel="stylesheet"
-					href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"
-				/>
-				{this.renderCampaigns()}
-				<Button content="Create Camapign" icon="add circle" primary />
-			</div>
+			<Layout>
+				<div>
+					<link
+						rel="stylesheet"
+						href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"
+					/>
+					<h3>Open Campaigns</h3>
+					<Button
+						floated="right"
+						content="Create Camapign"
+						icon="add circle"
+						primary
+					/>
+					{this.renderCampaigns()}
+				</div>
+			</Layout>
 		);
 	}
 }
