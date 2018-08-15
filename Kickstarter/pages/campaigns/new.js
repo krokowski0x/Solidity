@@ -28,7 +28,7 @@ export default class CampaignNew extends Component {
 		} catch (err) {
 			this.setState({ errorMessage: err.message });
 		} finally {
-			this.setState({ loading: false });
+			this.setState({ loading: false, errorMessage: "" });
 		}
 	};
 
