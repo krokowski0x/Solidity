@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { Link } from "../../../routes";
+import Campaign from "../../../ethereum/campaign";
+import web3 from "../../../ethereum/web3";
 import Layout from "../../../components/Layout";
 
 export default class RequestIndex extends Component {
 	static async getInitialProps(props) {
 		const { address } = props.query;
-		return { address };
+		const campaign = Campaign(address);
+		const requestCount = await campaign.methods.getRequestsCount().call();
+
+		const requests = await Promise.all(
+			Array(parseInt(requestCount))
+				.fill()
+				.map((element, index) => campaign.methods.requests(index).call())
+		);
+
+		return { address, requests, requestCount };
 	}
 
 	render() {
