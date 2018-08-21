@@ -18,8 +18,8 @@ fs.ensureDirSync(buildPath);
 
 // Get separate contracts out of output and write it to json files
 for (let contract in output) {
-	fs.outputJsonSync(
-		path.resolve(buildPath, `${contract.replace(":", "")}.json`),
-		output[contract]
-	);
+  fs.outputJsonSync(
+    path.resolve(buildPath, `${contract.replace(":", "")}.json`),
+    output[contract]
+  );
 }
